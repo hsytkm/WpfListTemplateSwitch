@@ -7,7 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfDataTemplateSelector", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfContainerStyleSelector", "WpfContainerStyleSelector\WpfContainerStyleSelector.csproj", "{A1B306A0-EB50-46AD-8489-30B255C6C110}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGroupContainerStyleSelector", "WpfGroupContainerStyleSelector\WpfGroupContainerStyleSelector.csproj", "{D9C851D3-5F44-4DEB-967D-709B7862EAD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfGroupContainerStyleSelector", "WpfGroupContainerStyleSelector\WpfGroupContainerStyleSelector.csproj", "{D9C851D3-5F44-4DEB-967D-709B7862EAD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionResources", "SolutionResources", "{CD4E9C6D-D2E6-4E06-AF05-70FDFFC6C4C7}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		WpfContainerStyleSelector.png = WpfContainerStyleSelector.png
+		WpfDataTemplateSelector.png = WpfDataTemplateSelector.png
+		WpfGroupContainerStyleSelector.png = WpfGroupContainerStyleSelector.png
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

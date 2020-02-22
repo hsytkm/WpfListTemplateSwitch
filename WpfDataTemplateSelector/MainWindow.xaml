@@ -18,7 +18,7 @@
 
     <DockPanel>
         <TextBlock DockPanel.Dock="Top" Margin="5" FontSize="14" >
-            <Run Text="HeaderTemplateSelector" />
+            <Run Text="GroupStyle.HeaderTemplateSelector" />
             <LineBreak />
             <Run Text="リストのデータ種別に応じてグルーピング表示する" />
             <LineBreak />
