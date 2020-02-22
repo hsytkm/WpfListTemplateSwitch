@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows;
-using System.Windows.Data;
+﻿using System.Windows;
 
 namespace WpfGroupContainerStyleSelector
 {
@@ -12,13 +10,6 @@ namespace WpfGroupContainerStyleSelector
         public MainWindow()
         {
             InitializeComponent();
-
-            var items = MyData.Items;
-
-            ICollectionView view = CollectionViewSource.GetDefaultView(items);
-            view.GroupDescriptions.Add(new PropertyGroupDescription(nameof(MyData.Type)));
-
-            DataContext = view;
         }
     }
 }

@@ -9,39 +9,54 @@
         Height="400" Width="400"
         Background="LightGray" >
 
-    <Window.Resources>
-        <DataTemplate x:Key="MyTemplate1">
-            <TextBlock Text="{Binding Name}" Background="LightGreen"/>
-        </DataTemplate>
-        <DataTemplate x:Key="MyTemplate2">
-            <TextBlock Text="{Binding Name}" Background="LightCyan"/>
-        </DataTemplate>
-        <DataTemplate x:Key="MyTemplate3">
-            <TextBlock Text="{Binding Name}" Background="LightPink"/>
-        </DataTemplate>
-        <local:MyDataTemplateSelector x:Key="MySelector"
-                                      Template1="{StaticResource MyTemplate1}"
-                                      Template2="{StaticResource MyTemplate2}"
-                                      Template3="{StaticResource MyTemplate3}" />
-    </Window.Resources>
+    <!-- How to make WPF Listview works same as Photoshop layer
+         https://stackoverflow.com/questions/2995434/how-to-make-wpf-listview-works-same-as-photoshop-layer -->
 
-    <StackPanel>
-        <TextBlock Margin="5" FontSize="14" >
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Margin="5" FontSize="14" >
             <Run Text="HeaderTemplateSelector" />
             <LineBreak />
-            <Run Text="リストのデータ種別に応じてグルーピングして表示する" />
+            <Run Text="リストのデータ種別に応じてグルーピング表示する" />
+            <LineBreak />
+            <Run Text="　左：元リスト" />
+            <LineBreak />
+            <Run Text="　右：処理済みリスト" />
         </TextBlock>
 
-        <ListView ItemsSource="{Binding}" >
-            <ListView.GroupStyle>
-                <GroupStyle HeaderTemplateSelector="{StaticResource MySelector}"/>
-            </ListView.GroupStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Value}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
+            <ListBox ItemsSource="{Binding SourceItems}" />
+
+            <ListBox Grid.Column="1"
+                     ItemsSource="{Binding SortedItems}" >
+                <ListBox.Resources>
+                    <DataTemplate x:Key="MyTemplate1">
+                        <TextBlock Text="{Binding Name}" Background="LightGreen"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="MyTemplate2">
+                        <TextBlock Text="{Binding Name}" Background="LightCyan"/>
+                    </DataTemplate>
+                    <DataTemplate x:Key="MyTemplate3">
+                        <TextBlock Text="{Binding Name}" Background="LightPink"/>
+                    </DataTemplate>
+                    <local:MyDataTemplateSelector x:Key="MySelector"
+                                                  Template1="{StaticResource MyTemplate1}"
+                                                  Template2="{StaticResource MyTemplate2}"
+                                                  Template3="{StaticResource MyTemplate3}" />
+                </ListBox.Resources>
+
+                <ListBox.GroupStyle>
+                    <GroupStyle HeaderTemplateSelector="{StaticResource MySelector}"/>
+                </ListBox.GroupStyle>
+            </ListBox>
+        </Grid>
+    </DockPanel>
 </Window>

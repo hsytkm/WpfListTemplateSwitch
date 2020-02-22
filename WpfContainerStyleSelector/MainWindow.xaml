@@ -12,52 +12,65 @@
     <!-- How to make WPF Listview works same as Photoshop layer
          https://stackoverflow.com/questions/2995434/how-to-make-wpf-listview-works-same-as-photoshop-layer -->
 
-    <Window.Resources>
-        <Style x:Key="MyStyle1" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <CheckBox IsChecked="{Binding BoolValue, Mode=TwoWay}" Background="LightGreen" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="MyStyle2" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <TextBlock Text="{Binding IntValue}" Background="LightCyan" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style x:Key="MyStyle3" TargetType="{x:Type ListBoxItem}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <TextBox Text="{Binding StringValue}" Background="LightPink" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <local:MyItemContaierStyleSelector x:Key="MyItemContainerStyleSelector"
-                                           Style1="{StaticResource MyStyle1}"
-                                           Style2="{StaticResource MyStyle2}"
-                                           Style3="{StaticResource MyStyle3}" />
-    </Window.Resources>
-
-    <StackPanel>
-        <TextBlock Margin="5" FontSize="14" >
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Margin="5" FontSize="14" >
             <Run Text="ItemContainerStyleSelector" />
             <LineBreak />
-            <Run Text="元リストの並びでデータ種別に応じて表示形式を切り替える" />
+            <Run Text="元リストの並びのままでデータ種別に応じて表示形式を切り替える" />
+            <LineBreak />
+            <Run Text="　左：元リスト" />
+            <LineBreak />
+            <Run Text="　右：処理済みリスト" />
         </TextBlock>
 
-        <ListBox ItemsSource="{Binding}"
-                 ItemContainerStyleSelector="{StaticResource MyItemContainerStyleSelector}" />
-    </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
 
+            <Panel.Resources>
+                <Style x:Key="MyStyle1" TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <CheckBox IsChecked="{Binding BoolValue, Mode=TwoWay}" Background="LightGreen" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="MyStyle2" TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <TextBlock Text="{Binding IntValue}" Background="LightCyan" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <Style x:Key="MyStyle3" TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <TextBox Text="{Binding StringValue}" Background="LightPink" />
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <local:MyItemContaierStyleSelector x:Key="MyItemContainerStyleSelector"
+                                                   Style1="{StaticResource MyStyle1}"
+                                                   Style2="{StaticResource MyStyle2}"
+                                                   Style3="{StaticResource MyStyle3}" />
+            </Panel.Resources>
+
+            <ListBox ItemsSource="{Binding}" />
+
+            <ListBox Grid.Column="1"
+                     ItemsSource="{Binding}"
+                     ItemContainerStyleSelector="{StaticResource MyItemContainerStyleSelector}" />
+        </Grid>
+    </DockPanel>
 </Window>
