@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfContainerStyleSelector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfContainerStyleSelector"
+        mc:Ignorable="d"
+        Title="WpfContainerStyleSelector"
+        Height="400" Width="400"
+        Background="LightGray" >
+
+    <!-- How to make WPF Listview works same as Photoshop layer
+         https://stackoverflow.com/questions/2995434/how-to-make-wpf-listview-works-same-as-photoshop-layer -->
+
+    <Window.Resources>
+        <Style x:Key="MyStyle1" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <CheckBox IsChecked="{Binding BoolValue, Mode=TwoWay}" Background="LightGreen" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MyStyle2" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <TextBlock Text="{Binding IntValue}" Background="LightCyan" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="MyStyle3" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <TextBox Text="{Binding StringValue}" Background="LightPink" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <local:MyItemContaierStyleSelector x:Key="MyItemContainerStyleSelector"
+                                           Style1="{StaticResource MyStyle1}"
+                                           Style2="{StaticResource MyStyle2}"
+                                           Style3="{StaticResource MyStyle3}" />
+    </Window.Resources>
+
+    <StackPanel>
+        <TextBlock Margin="5" FontSize="14" >
+            <Run Text="ItemContainerStyleSelector" />
+            <LineBreak />
+            <Run Text="元リストの並びでデータ種別に応じて表示形式を切り替える" />
+        </TextBlock>
+
+        <ListBox ItemsSource="{Binding}"
+                 ItemContainerStyleSelector="{StaticResource MyItemContainerStyleSelector}" />
+    </StackPanel>
+
+</Window>
