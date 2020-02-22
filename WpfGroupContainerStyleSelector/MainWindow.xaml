@@ -37,7 +37,7 @@
 
             <ListBox Grid.Column="1"
                      ItemsSource="{Binding SortedItems}" >
-                <ListBox.Resources>
+                <ItemsControl.Resources>
                     <Style x:Key="MyStyle1" TargetType="{x:Type GroupItem}">
                         <Setter Property="Template">
                             <Setter.Value>
@@ -94,11 +94,11 @@
                                                 Style1="{StaticResource MyStyle1}"
                                                 Style2="{StaticResource MyStyle2}"
                                                 Style3="{StaticResource MyStyle3}" />
-                </ListBox.Resources>
+                </ItemsControl.Resources>
 
-                <ListBox.GroupStyle>
+                <ItemsControl.GroupStyle>
                     <GroupStyle ContainerStyleSelector="{StaticResource MyGroupStyleSelector}"/>
-                </ListBox.GroupStyle>
+                </ItemsControl.GroupStyle>
             </ListBox>
         </Grid>
     </DockPanel>

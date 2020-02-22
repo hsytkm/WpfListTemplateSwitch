@@ -37,7 +37,7 @@
 
             <ListBox Grid.Column="1"
                      ItemsSource="{Binding SortedItems}" >
-                <ListBox.Resources>
+                <ItemsControl.Resources>
                     <DataTemplate x:Key="MyTemplate1">
                         <TextBlock Text="{Binding Name}" Background="LightGreen"/>
                     </DataTemplate>
@@ -51,11 +51,11 @@
                                                   Template1="{StaticResource MyTemplate1}"
                                                   Template2="{StaticResource MyTemplate2}"
                                                   Template3="{StaticResource MyTemplate3}" />
-                </ListBox.Resources>
+                </ItemsControl.Resources>
 
-                <ListBox.GroupStyle>
+                <ItemsControl.GroupStyle>
                     <GroupStyle HeaderTemplateSelector="{StaticResource MySelector}"/>
-                </ListBox.GroupStyle>
+                </ItemsControl.GroupStyle>
             </ListBox>
         </Grid>
     </DockPanel>

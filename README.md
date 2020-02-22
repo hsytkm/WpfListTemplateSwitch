@@ -1,10 +1,10 @@
-# [Wpf] ListBox Templates
+# [Wpf] ItemsControl Templates
 
-ListBox の表示形式を View で加工する。
+WPF の ItemsControl の表示形式を加工する。
 
 ## WpfContainerStyleSelector
 
-ListBox.ItemContainerStyleSelector
+ItemsControl.ItemContainerStyleSelector
 
 元リストの並びのままでデータ種別に応じて表示形式を切り替える
 
@@ -13,7 +13,7 @@ ListBox.ItemContainerStyleSelector
 
 ## WpfDataTemplateSelector
 
-ListBox.GroupStyle.HeaderTemplateSelector
+ItemsControl.GroupStyle.HeaderTemplateSelector
 
 リストのデータ種別に応じてグルーピング表示する
 
@@ -22,7 +22,7 @@ ListBox.GroupStyle.HeaderTemplateSelector
 
 ## WpfGroupContainerStyleSelector
 
-ListBox.GroupStyle.ContainerStyleSelector
+ItemsControl.GroupStyle.ContainerStyleSelector
 
 グルーピングしたリストのデータ種別に応じて表示形式を切り替える
 
